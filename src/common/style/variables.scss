@@ -1,0 +1,52 @@
+//图片自适应
+@mixin imgBox( $w:auto, $h:auto,$fit:cover) {
+  width: $w;
+  height: $h;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: $fit;
+  }
+  @content;
+}
+//单行省略，多行省略
+@mixin ellipsis($lines:1){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if $lines == 1 {
+      white-space: nowrap;
+  }@else{
+     display: -webkit-box;
+     -webkit-line-clamp: $lines;
+     -webkit-box-orient: vertical;
+  }
+  @content;
+}
+
+/*
+* @author duan
+* 文字基础设置
+*/
+@mixin setBase($w:auto,$h:auto,$mb:0,$fs:16px,$ali:left,$cl:#333){
+  width:$w;
+  height:$h;
+  line-height:$h;
+  text-align:$ali;
+  font-size: $fs;
+  color:$cl;
+  margin-bottom:$mb;
+  @content;
+}
+/*
+* @author duan
+* 外盒子设置
+*/
+@mixin setBox($w:auto,$h:auto,$p:27px 11px 0 27px,$bgc:#fff){
+  width:$w;
+  height:$h;
+  padding:$p;
+  background-color:$bgc;
+  margin-bottom:27px;
+  @content;
+}
