@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './common/style/flex.css'
 import './common/style/common.scss'
+import './common/style/variables.scss'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 
@@ -17,18 +18,18 @@ import {
   getSessionToken
 } from './common/js/auth'
 
-router.beforeEach((to, from, next) => {
-  if (to.fullPath == '/') {
-    localStorage.removeItem(TokenKeys.ACCESS_TOKEN);
-  }
-  if (to.fullPath != '/' && !getSessionToken()) {
-    next({
-      path: '/'
-    })
-  } else {
-    next()
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.fullPath == '/') {
+//     localStorage.removeItem(TokenKeys.ACCESS_TOKEN);
+//   }
+//   if (to.fullPath != '/' && !getSessionToken()) {
+//     next({
+//       path: '/'
+//     })
+//   } else {
+//     next()
+//   }
+// });
 
 /* eslint-disable no-new */
 new Vue({

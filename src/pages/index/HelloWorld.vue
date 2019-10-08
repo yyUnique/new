@@ -80,11 +80,15 @@
         </a>
       </li>
     </ul>
+    <el-button type="primary" @click="toOther()">11111</el-button>
   </div>
 </template>
 
 <script>
-import { loginToken } from "../../api/apis";
+import { imageCode,loginToken } from "../../api/apis/auth";
+import {
+  TokenKeys
+} from '../../common/js/variable'
 export default {
   name: 'HelloWorld',
   
@@ -92,7 +96,27 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+  mounted(){
+    this.loginToken()
+  },
+  methods:{
+    toOther(){
+      this.$router.push('/index')
+    },
+    loginToken(){
+      let params = {
+
+      }
+      console.log(111111111)
+      loginToken(params).then(res=>{
+        console.log(res)
+        localStorage.setItem(TokenKeys.SESSION_TOKEN, new Date().getTime());
+        localStorage.setItem(TokenKeys.ACCESS_TOKEN, res.data.token);
+      })
+    }
+  },
+  
 }
 </script>
 
